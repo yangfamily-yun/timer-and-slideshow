@@ -1,0 +1,33 @@
+video {
+    width: 100%;
+}
+
+img {
+    float: left;
+}
+
+audio {
+    float: left;
+}
+
+.bottom {
+    position: relative;
+    /* height: 350px; */
+}
+
+.bottom::before {
+    content: "";
+    display: block;
+    width: 1000px;
+    height: 1000px;
+    background: red url(../img/20230416185915.jpg) no-repeat;
+    background-size: 1000px auto;
+    margin: 4px auto -2px;
+}
+
+.bottom audio {
+    position: absolute;
+    margin-left: 500px;
+    left: -150px;
+    bottom: 0px;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript+jQuery</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/first.css">
+    <script src="./js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            $("table,form").hide()
+            $("li").each(function (index, element) {
+                element.onclick = function () {
+                    $(this).prop("class", "active");
+                    $(this).siblings("li").prop("class", "")
+                    let a = $(this).text();
+                    // console.log(typeof a);
+                    switch (a) {
+                        case "表单":
+                            $("table").hide();
+                            $("form").show();;
+                            break;
+                        case "表格":
+                            $("form").hide();
+                            $("table").show();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            })
+            var min = 0;
+            var sec = 0;
+            var ms = 0;
+            var timer = null;
+            var count = 0;
+            // 点击第一个按钮
+            $('.bnt button:eq(0)').click(function () {
+                if ($(this).html() == '记次') {
+                    if (!timer) {
+                        alert("没有开启定时器!");
+                        return;
+                    }
+                    count++;
+                    var right1 = "<span class='right'>" + $('#showtime').text() + "</span>";
+                    var insertStr = "<div><span class='left'>记次" + count + "</span>" + right1 + "</div>";
+
+                    $("#record").prepend($(insertStr));
+
+                } else {
+                    min = 0;
+                    sec = 0;
+                    ms = 0;
+                    count = 0;
+                    $('#showtime span:eq(0)').html('00');
+                    $('#showtime span:eq(2)').html('00');
+                    $('#showtime span:eq(4)').html('00');
+                    $('#record').html('');
+                }
+
+            });
+            //点击第二个按钮
+            $('.bnt button:eq(1)').click(function () {
+                if ($(this).html() == '启动') {
+                    $(this).html('停止');
+                    $('.bnt button:eq(0)').html('记次');
+                    clearInterval(timer);
+                    timer = setInterval(show, 10)
+                } else {
+                    $(this).html('启动');
+                    $('.bnt button:eq(0)').html('复位');
+                    clearInterval(timer);
+                }
+            });
+            //生成时间
+            function show() {
+                ms++;
+                if (sec == 60) {
+                    min++; sec = 0;
+                }
+                if (ms == 100) {
+                    sec++; ms = 0;
+                }
+                var msStr = ms;
+                if (ms < 10) {
+                    msStr = "0" + ms;
+                }
+                var secStr = sec;
+                if (sec < 10) {
+                    secStr = "0" + sec;
+                }
+                var minStr = min;
+                if (min < 10) {
+                    minStr = "0" + min;
+                }
+                $('#showtime span:eq(0)').html(minStr);
+                $('#showtime span:eq(2)').html(secStr);
+                $('#showtime span:eq(4)').html(msStr);
+            }
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <header>
+            <h1 class="title">JavaScript+jQuery</h1>
+        </header>
+        <div class="imformation">
+            <nav>
+                <ul class="navigation">
+                    <li>表单</li>
+                    <li>表格</li>
+
+                </ul>
+            </nav>
+            <img src="./img/direction.webp" alt="">
+            <div class="more">
+                <article>
+                    <!-- 表单 -->
+                    <form id="validator-form" class="ui-form" method="get" action="">
+                        <div class="field-item">
+                            <label for="username">姓名</label>
+                            <input id="username" name="username" class="input-item" type="text" value="" maxlength="20"
+                                placeholder="user name" autocomplete="off" />
+                        </div>
+
+
+
+                        <div class="field-item">
+                            <label for="xuehao">学号</label>
+                            <input id="xuehao" name="xuehao" type="number" class="input-item" value="" />
+                        </div>
+                        <div class="field-item">
+                            <label for="mobile">联系电话</label>
+                            <input id="mobile" name="mobile" type="text" class="input-item" value="" maxlength="11" />
+                        </div>
+
+                    </form>
+                </article>
+                <article>
+                    <table border="1" cellspacing="0" <tr>
+                        <th>姓名</th>
+                        <th>学号</th>
+                        <th>联系电话</th>
+                        </tr>
+                        <tr>
+                            <td>张三</td>
+                            <td>321424</td>
+                            <td>13435971830</td>
+                        </tr>
+                        <tr>
+                            <td>李四</td>
+                            <td>326310</td>
+                            <td>13435971830</td>
+                        </tr>
+                    </table>
+                </article>
+            </div>
+        </div>
+        <div class="intervalBox">
+            <div id="showtime">
+                <span>00</span>
+                <span>:</span>
+                <span>00</span>
+                <span>:</span>
+                <span>00</span>
+            </div>
+            <div class="bnt">
+                <button>记次</button>
+                <button>启动</button>
+            </div>
+            <!--记录显示的次数-->
+            <div id="record">
+                <!--/*<div>
+                        <span class="left">第一次记录:</span>
+                        <span class="right">00:00:00</span>
+                    </div>*/-->
+            </div>
+        </div>
+
+        <footer>
+            <a href="./子网页/second.html">跳转到轮播焦点图</a>
+        </footer>
+    </div>
+
+
+</body>
+
+</html>

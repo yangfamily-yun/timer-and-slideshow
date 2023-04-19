@@ -1,0 +1,121 @@
+.imformation {
+    display: flex;
+    justify-content: space-between;
+    height: 250px;
+    overflow: hidden;
+}
+
+.navigation {
+    /* float: left; */
+    width: 150px;
+    height: 100px;
+    /* border: 1px solid #000; */
+    /* display: flex;
+    justify-content: space-between; */
+    margin-bottom: 10px;
+}
+
+.navigation li {
+    border: 1px solid #000;
+    /* width: 25%;
+    height: 25%; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+img {
+
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    top: 45px;
+    left: 600px;
+}
+
+.active {
+    background-color: blue;
+}
+
+
+
+input {
+    width: 150px;
+    margin-bottom: 10px;
+
+}
+
+input[type="text"] {
+    background-color: yellow;
+}
+
+input[type="password"] {
+    background-color: red;
+}
+
+.intervalBox {
+    margin: 10px auto;
+    width: 400px;
+}
+
+#showtime {
+    margin: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+span {
+    font-size: 60px;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 0;
+    outline: none;
+    margin: 0 48px;
+    font-size: 24px;
+}
+
+#record {
+    margin-top: 20px;
+}
+
+#record div {
+    width: 400px;
+    height: 30px;
+    border-bottom: 1px dotted #666;
+}
+
+#record span {
+    font-size: 20px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+
+footer {
+    display: block;
+    height: 40px;
+    text-align: center;
+    /* background: peachpuff; */
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+a:hover {
+    color: green;
+    font-size: larger;
+    text-shadow: 5px 5px 2px grey;
+}
